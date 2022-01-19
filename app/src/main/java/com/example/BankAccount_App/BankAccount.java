@@ -1,8 +1,5 @@
 package com.example.BankAccount_App;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,16 +21,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class BankAccount extends AppCompatActivity implements View.OnClickListener {
 
+    double depositAmount, amount, withdrawAmount;
     private TextView balanceText, prevT;
     private EditText depositText, withdrawText;
     private Button depositTextButton, withdrawTextButton, signOUT;
-    double depositAmount, amount, withdrawAmount;
     private DatabaseReference mDatabase;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
     private ProgressBar progressBar;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +70,7 @@ public class BankAccount extends AppCompatActivity implements View.OnClickListen
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
 
-                if(userProfile != null) {
+                if (userProfile != null) {
                     String fullName = userProfile.fullName;
                     greetingText.setText("Welcome " + fullName + "!");
                 }
@@ -78,28 +78,25 @@ public class BankAccount extends AppCompatActivity implements View.OnClickListen
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.depositButton:
                 depositAmount = Double.valueOf(depositText.getText().toString());
-                balanceText.setText(String.valueOf("$ " + deposit(depositAmount)));
-                prevT.setText(String.valueOf("+ $ " + depositText.getText().toString()));
+                balanceText.setText("$ " + deposit(depositAmount));
+                prevT.setText("+ $ " + depositText.getText().toString());
                 break;
-                
+
             case R.id.withdrawButton:
                 withdrawAmount = Double.valueOf(withdrawText.getText().toString());
-                balanceText.setText(String.valueOf("$ " + withdraw(withdrawAmount)));
-                prevT.setText(String.valueOf("- $ " + withdrawText.getText().toString()));
+                balanceText.setText("$ " + withdraw(withdrawAmount));
+                prevT.setText("- $ " + withdrawText.getText().toString());
                 break;
         }
-
     }
 
     private double withdraw(double withdrawAmount) {
@@ -111,5 +108,4 @@ public class BankAccount extends AppCompatActivity implements View.OnClickListen
         amount = amount + depositAmount;
         return amount;
     }
-
 }

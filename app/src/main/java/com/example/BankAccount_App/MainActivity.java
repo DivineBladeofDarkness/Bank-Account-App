@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 else {
-                    Toast.makeText(MainActivity.this, "No account with this email exist.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Incorrect password/email", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
                 }
             }

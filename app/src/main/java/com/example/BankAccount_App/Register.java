@@ -65,7 +65,7 @@ public class Register extends AppCompatActivity {
         }
 
         if(password.isEmpty() || password.length() < 8) {
-            editTextPassword.setError("Too short.");
+            editTextPassword.setError("Too short, must be at least 8 characters.");
             editTextPassword.requestFocus();
             return;
         }
