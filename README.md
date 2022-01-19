@@ -1,7 +1,7 @@
-# Bank-Account-App
+# Bank Account App (using Firebase as login)
 A simple bank account app made using Android Studio (Java)
 
-This app allows a user to create an account, login with the account & run the app. Also if the user has forgotten their password, they can easily reset it with their email address.
+This app allows a user to create an account, login with the account & run the app. Also if the user has forgotten their password, they can easily reset it with their email address. Passwords are safely stored on Firebase database.
 
 # Login screen:
 ![image](https://user-images.githubusercontent.com/58964916/150178998-b0434651-5300-4a58-9be3-fd6cc03eb8fa.png)
